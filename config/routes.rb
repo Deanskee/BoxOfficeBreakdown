@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'users/index'
+
+  get 'users/show'
+
 root 'groups#index'
 
 match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
