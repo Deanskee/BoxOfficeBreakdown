@@ -15,3 +15,13 @@
  *= require_self
  */
 
+.box-office-height {
+	height: 100px;
+	width: 100px;
+
+}
+
+.box-office-row {
+	height: 100px;
+	width: 100px;
+}
