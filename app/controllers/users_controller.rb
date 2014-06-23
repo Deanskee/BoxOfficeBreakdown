@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 private
 
 	def users_params 
-		params.require(:group).permit(:name, :points, :level, :user_ids => [])
+		params.require(:group).permit(:name, :points, :level, :avatar, :user_ids  => [])
 	end
 end
 

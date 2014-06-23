@@ -31,7 +31,14 @@ GEM
       tzinfo (~> 1.1)
     angularjs-rails (1.2.16)
     arel (5.0.1.20140414130214)
+    aws-sdk (1.42.0)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
     builder (3.2.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.4)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -39,6 +46,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.0)
     faraday (0.9.0)
@@ -66,9 +74,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25.1)
+    mini_portile (0.6.0)
     minitest (5.3.4)
     multi_json (1.10.1)
     multipart-post (2.0.0)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -83,6 +94,11 @@ GEM
     omniauth-oauth2 (1.0.3)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    paperclip (4.1.1)
+      activemodel (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.3)
+      mime-types
     pg (0.17.1)
     polyglot (0.3.5)
     rack (1.5.2)
@@ -111,6 +127,22 @@ GEM
     rake (10.3.2)
     rdoc (4.1.1)
       json (~> 1.4)
+    rspec-core (3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-expectations (3.0.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.0.0)
+    rspec-mocks (3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-rails (3.0.1)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.0.0)
+      rspec-expectations (~> 3.0.0)
+      rspec-mocks (~> 3.0.0)
+      rspec-support (~> 3.0.0)
+    rspec-support (3.0.0)
     sass (3.2.19)
     sass-rails (4.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -120,6 +152,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    shoulda-matchers (2.6.1)
+      activesupport (>= 3.0.0)
     spring (1.1.3)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -148,16 +182,20 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   angularjs-rails
+  aws-sdk
   coffee-rails (~> 4.0.0)
   figaro
   foundation-rails
   jbuilder (~> 2.0)
   jquery-rails
   omniauth-facebook (= 1.4.0)
+  paperclip (~> 4.1)
   pg
   rails (= 4.1.0)
   rails_12factor
+  rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  shoulda-matchers
   spring
   uglifier (>= 1.3.0)
