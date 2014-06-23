@@ -1,2 +1,9 @@
 <h1>Guesses#index</h1>
 <p>Find me in app/views/guesses/index.html.erb</p>
+
+<% @guesses.each do |guess| %>
+<%= guess.amount %>
+
+<%= link_to 'delete', guess, method: :delete, data: {confirm: 'are you sure'} %>
+<%= link_to 'edit', edit_guess_path(guess) %>
+<% end %>

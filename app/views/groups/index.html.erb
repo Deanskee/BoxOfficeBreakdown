@@ -1,6 +1,11 @@
 <h1>Groups#index</h1>
+<% @groups.each do |g| %>
+<%= g.name %>
+<%= g.description %>
 
-
+<%= link_to 'delete', g, method: :delete, data: {confirm: 'are you sure'} %>
+<%= link_to 'edit', edit_group_path(g) %>
+<% end %>
 
  <div id = "moviecontainer">
 	<div id="test">
