@@ -6,7 +6,6 @@
 
 #moviecontainer {
 	width:40%;
-	height:600px;
 	border:1px solid black;
 }
 
@@ -19,9 +18,13 @@
 	text-decoration:none;
 }
 
-li{ list-style-type: none }
+li { 
+	list-style-type: none;
+	line-height:1.1; 
+}
 
 #dates{
 float:left;
 width:auto;
+margin-left: 10px;
 }

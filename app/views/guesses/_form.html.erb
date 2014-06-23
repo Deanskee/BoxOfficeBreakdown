@@ -1,0 +1,7 @@
+<%= form_for @guess do |f| %>
+
+   <span class="title"> Guess Amount: <%= f.text_field :amount %>
+
+  <%= f.submit "Submit", class: "small button" %>
+
+<% end %>

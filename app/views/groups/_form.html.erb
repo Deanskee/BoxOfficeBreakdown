@@ -1,0 +1,9 @@
+<%= form_for @group do |f| %>
+
+   <span class="title"> Name: <%= f.text_field :name %>
+
+    <span class="title"> Description: <%= f.text_field :description %>
+
+  <%= f.submit "Submit", class: "small button" %>
+
+<% end %>
