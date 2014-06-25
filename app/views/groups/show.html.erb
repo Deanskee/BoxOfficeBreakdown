@@ -7,29 +7,30 @@
 	<li>Description: <%= @group.description %></li>
 	</br>
 </div>
+
 <div id="profile-photo">
 	<% if @group.avatar_file_name %>
-		<%= image_tag @group.avatar_url %><br /><br />
+		<%= image_tag @group.avatar_url(:thumb) %><br /><br />
 	<% end %>
 </div>
 
 	<div class="group_members">
 			<strong><p>Group Members</p></strong>
 			<ul>
-				<% @group.users.each do |user| %>
+			  <% @group.users.each do |user| %>
 				<li class="group_members_names"><%= user.name %></li>
-				<% end %>
+			  <% end %>
 			</ul>
 		</div>
 
-<% @group.users.each do |u| %>
-	Users in group: <%= u.name %>
-	Points: <%= u.points %>
-	Guess:	<%= u.guesses %>
-<% end %>
+		<% @group.users.each do |u| %>
+			Users in group: <%= u.name %>
+			Points: <%= u.points %>
+			Guess:	<%= u.guesses %>
+		<% end %>
 
 
 <ul class="button-group">
-<li><%= link_to 'delete', @group, class: "tiny button", method: :delete, data: {confirm: 'are you sure'} %></li>
-<li><%= link_to 'edit', edit_group_path(@group), class: "tiny button" %></li>
+	<li><%= link_to 'delete', @group, class: "tiny button", method: :delete, data: {confirm: 'are you sure'} %></li>
+	<li><%= link_to 'edit', edit_group_path(@group), class: "tiny button" %></li>
 </ul>
