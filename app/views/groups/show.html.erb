@@ -1,29 +1,34 @@
 <h1>Groups#show</h1>
 <p>Find me in app/views/groups/show.html.erb</p>
 <div id= "profile-info">
-<l1>Group Name: <%= @group.name %></li>
-</br>
-</br>
-<li>Description: <%= @group.description %></li>
-</br>
+	<l1>Group Name: <%= @group.name %></li>
+	</br>
+	</br>
+	<li>Description: <%= @group.description %></li>
+	</br>
 </div>
 <div id="profile-photo">
-        	<% if @user.avatar_file_name %>
-        		<%= image_tag @user.avatar_url(:medium) %><br /><br />
-        	<% end %>
-        </div>
+	<% if @group.avatar_file_name %>
+		<%= image_tag @group.avatar_url %><br /><br />
+	<% end %>
+</div>
 
-<li> Guess: <%# @guess.amount %> </li>
+	<div class="group_members">
+			<strong><p>Group Members</p></strong>
+			<ul>
+				<% @group.users.each do |user| %>
+				<li class="group_members_names"><%= user.name %></li>
+				<% end %>
+			</ul>
+		</div>
 
 <% @group.users.each do |u| %>
-Users in group: <%= u.name %>
-Points: <%= u.points %>
-<%= u.guesses %>
+	Users in group: <%= u.name %>
+	Points: <%= u.points %>
+	Guess:	<%= u.guesses %>
 <% end %>
 
-<%# @guess.users.each do |g| %>
-	<%# g.guesses %>
-<%# end %> 
+
 <ul class="button-group">
 <li><%= link_to 'delete', @group, class: "tiny button", method: :delete, data: {confirm: 'are you sure'} %></li>
 <li><%= link_to 'edit', edit_group_path(@group), class: "tiny button" %></li>

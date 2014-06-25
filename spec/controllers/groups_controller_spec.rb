@@ -33,7 +33,7 @@ describe GroupsController, :type => :controller do
 		it 'should be successful' do
 			expect(response).to be_success
 		end
-		it 'should show the right group' do
+		it 'should show the correct group' do
 			expect(assigns(:group)).to eq(@group)
 		end
 		it 'renders the #show view' do

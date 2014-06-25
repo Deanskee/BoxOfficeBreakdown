@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 gem 'nokogiri'
 gem 'omniauth-facebook', '1.4.0'
 gem 'figaro'
-
+gem 'cancancan', '~> 1.8'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use postgresql as the database for Active Record

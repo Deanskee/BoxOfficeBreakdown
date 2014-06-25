@@ -2,10 +2,19 @@ class GuessesController < ApplicationController
   before_action :set_guess, :only => [:show, :edit, :update, :destroy]
 
   respond_to :json, :html
+
   def index
     @guesses = Guess.all
     respond_with @guesses
   end
+
+  # def checkWinner
+  #   actualAmount = 100
+  #   @group = Group.find(params[:id])
+  #   @users = @group.users
+    
+  #   for each 
+  # end
 
   def new
     @guess = Guess.new
@@ -50,7 +59,7 @@ class GuessesController < ApplicationController
   end
 
   def guess_params 
-    params.require(:guess).permit(:amount)
+    params.require(:guess).permit(:amount, :user_id)
   end
 
 end

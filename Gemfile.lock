@@ -35,6 +35,7 @@ GEM
       json (~> 1.4)
       nokogiri (>= 1.4.4)
     builder (3.2.2)
+    cancancan (1.8.2)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.4)
@@ -212,6 +213,7 @@ DEPENDENCIES
   active_model_serializers
   angularjs-rails
   aws-sdk
+  cancancan (~> 1.8)
   coffee-rails (~> 4.0.0)
   figaro
   foundation-rails
