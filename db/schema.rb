@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140623030822) do
+ActiveRecord::Schema.define(version: 20140624025140) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,10 @@ ActiveRecord::Schema.define(version: 20140623030822) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "guesses", force: true do |t|
@@ -56,7 +60,7 @@ ActiveRecord::Schema.define(version: 20140623030822) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.integer  "points"
+    t.integer  "points",              default: 5
     t.string   "level"
     t.datetime "created_at"
     t.datetime "updated_at"

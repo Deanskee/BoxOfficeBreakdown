@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'nokogiri'
 gem 'omniauth-facebook', '1.4.0'
 gem 'figaro'
 
@@ -33,6 +33,8 @@ gem "paperclip", "~> 4.1"
 #Amazon S3
 gem 'aws-sdk'
 
+# admin ability
+gem 'rails_admin'
 
 group :development, :test do
   gem "rspec-rails"

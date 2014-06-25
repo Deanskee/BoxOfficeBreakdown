@@ -1,9 +1,29 @@
+  <% if @group.errors.any? %>
+    <h4>
+      <%= pluralize(@group.errors.count, "error") %>
+      prohibited this Group from being saved:
+    </h4>
+    <ul class="list-group">
+      <% @group.errors.full_messages.each do |message| %>
+        <li class="alert-box success radius">
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
 <%= form_for @group do |f| %>
 
    <span class="title"> Name: <%= f.text_field :name %>
 
-    <span class="title"> Description: <%= f.text_field :description %>
+   <span class="title"> Description: <%= f.text_field :description %>
 
-  <%= f.submit "Submit", class: "small button" %>
+   <span class="title">Avatar: </span><%= f.file_field :avatar %>
+
+  		<div class="row">
+          <div class="col-sm-3">
+            <%= f.submit 'Add', class: "tiny button" %>
+          </div>
+        </div>
 
 <% end %>

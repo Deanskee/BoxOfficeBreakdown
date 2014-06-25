@@ -1,12 +1,12 @@
 <h1>Groups#index</h1>
-<% @groups.each do |g| %>
-<%= g.name %>
-<%= g.description %>
+<%# @groups.each do |g| %>
+<%# g.name %>
+<%# g.description %>
 
-<%= link_to 'delete', g, method: :delete, data: {confirm: 'are you sure'} %>
-<%= link_to 'edit', edit_group_path(g) %>
-<% end %>
-
+<%# link_to 'delete', g, method: :delete, data: {confirm: 'are you sure'} %>
+<%# link_to 'edit', edit_group_path(g) %>
+<%# end %>
+<li class="add_group_style"><%= link_to "+ Add New Group", new_group_path %></li>
  <div id = "moviecontainer">
 	<div id="test">
 		
@@ -15,3 +15,24 @@
 	<div id="dates"></div>
 	<div class="clearfix"></div>
 </div>
+<table>
+  <thead>
+    <tr>
+      <th>TITLE</th>
+      <th>WEEKEND BOX OFFICE</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @listings.each do |t| %>
+      <tr>
+        <td><%= t[0] %></td>
+        <td><%= t[1] %></td>
+      </tr>
+     
+    <% end %>
+  </tbody>
+</table>
+
+<br>

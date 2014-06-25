@@ -1,3 +1,4 @@
+require 'open-uri'
 class GroupsController < ApplicationController
   before_action :set_group, :only => [:show, :edit, :update, :destroy]
 
@@ -5,7 +6,23 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
-    respond_with @groups
+    
+# Scrapping method
+    url = "https://search.yahoo.com/search?p=movie+weekend+box+office&toggle=1&cop=mss&ei=UTF-8&fr=yfp-t-901"
+    doc = Nokogiri::HTML(open(url))
+
+    listings = Array.new
+
+  
+    doc.css(".wrap").each do |item|
+      @title = item.at_css(".c-styl-5").text
+      @box = item.at_css(".c-styl-8").text
+
+      listings << [@title, @box]
+
+    @listings = listings[0..4]
+
+    end
   end
 
 
@@ -26,11 +43,13 @@ class GroupsController < ApplicationController
 
     if @group.save
       respond_to do |format|
-        format.html { redirect_to groups_path }
+        flash[:success] = "Group successfully created"
+        format.html { redirect_to group_path(@group) }
         format.json { render json: @group, status: :created }
       end
     else
       respond_to do |format|
+        flash[:danger] = "Group could not be created!"
         format.html { render 'new' }
         format.json { render json: @group.errors, status: :unprocessable_entity }
       end
@@ -41,7 +60,7 @@ class GroupsController < ApplicationController
 
     if @group.update(group_params)
       respond_to do |format|
-        format.html { redirect_to groups_path }
+        format.html { redirect_to group_path(@group) }
         format.json { render nothing: true, status: :no_content }
       end
     else
@@ -55,10 +74,9 @@ class GroupsController < ApplicationController
   def destroy
 
     @group.destroy
-
     respond_to do |format|
       format.html { redirect_to groups_path }
-      format.json { render json: { head: :ok } }
+      format.json { render json: :no_content }
     end
   end
 
@@ -69,7 +87,7 @@ class GroupsController < ApplicationController
   end
 
   def group_params
-    params.require(:group).permit(:name, :description)
+    params.require(:group).permit(:name, :description, :avatar_file_name, :avatar_content_type, :avatar_file_size, :user_ids => [])
   end
 
 end

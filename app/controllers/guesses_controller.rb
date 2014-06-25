@@ -14,7 +14,7 @@ class GuessesController < ApplicationController
   def create
     @guess = Guess.new(guess_params)
       if @guess.save
-      redirect_to groups_path(@user)
+      redirect_to groups_path(@guess)
       else
       render :new
       end
