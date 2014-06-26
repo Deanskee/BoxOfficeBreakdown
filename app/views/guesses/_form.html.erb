@@ -2,6 +2,9 @@
 
    <span class="title"> Guess Amount: <%= f.text_field :amount %>
 
+
+  <%= f.collection_select :movie_id, Movie.all, :id, :title %>
+
   <%= f.submit "Submit", class: "tiny button" %>
 
 <% end %>

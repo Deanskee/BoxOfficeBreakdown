@@ -18,21 +18,32 @@ class WelcomeController < ApplicationController
         @box = item.at_css(".c-styl-8").text
          puts "we found it!" + @title + "x"
          # Needed to take out the $, the , and the . symbol from the scrape so it would store the actual weekend box office amount
-         if this_movie
+         
+         amt = @box.gsub('$', '').gsub(',', '').to_i
+         # amt is taking the movie and spitting it to my database
 
-          this_movie.actual_amount = @box.gsub('$', '').gsub(',', '').to_i
+         if this_movie
+          this_movie.actual_amount = amt
           this_movie.save
+         else
+          Movie.create(title: @title[(dot_idx + 2)..-1], actual_amount:amt)
          end
         listings << [@title, @box]
        end
 	end
-    @listings = listings[0..4]
+  
     # This takes the top 5 from the weekend box office amount
-
     # Below is comparing the guess amount from the week prior to the actual amount and sorting the guesses stored as a and b
-    last_week= Guess.where( :created_at => Date.commercial(Date.today.year, Date.today.cweek - 1, 1) ... Date.commercial(Date.today.year, Date.today.cweek, 1))
+     last_week= Guess.where( :created_at => Date.commercial(Date.today.year, Date.today.cweek - 1, 1) ... Date.commercial(Date.today.year, Date.today.cweek, 1))
+     last_week.each do |g|
+       if g.movie 
+       g.amount = (g.movie.actual_amount - g.amount).abs
+        
+     end
+  end
 
-     last_week.sort {|a,b| (a.movie.actual_amount - a.amount).abs <  (b.movie.actual_amount - b.amount).abs}
+     last_week.sort_by{|x| x[:amount]}
+      @listings = last_week[0..4]
       # raise last_week.map(&:id).inspect
   end
 end

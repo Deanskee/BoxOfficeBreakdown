@@ -8,20 +8,13 @@ class GuessesController < ApplicationController
     respond_with @guesses
   end
 
-  # def checkWinner
-  #   actualAmount = 100
-  #   @group = Group.find(params[:id])
-  #   @users = @group.users
-    
-  #   for each 
-  # end
-
   def new
     @guess = Guess.new
   end
 
   def create
-    @guess = Guess.new(guess_params)
+    @guess = current_user.guesses.new(guess_params)
+
       if @guess.save
       redirect_to groups_path(@guess)
       else
@@ -59,7 +52,7 @@ class GuessesController < ApplicationController
   end
 
   def guess_params 
-    params.require(:guess).permit(:amount, :user_id)
+    params.require(:guess).permit(:amount, :movie_id )
   end
 
 end

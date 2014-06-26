@@ -64,9 +64,9 @@ describe GroupsController, :type => :controller do
 					post :create, group: valid_attributes
 				end.to change(Group, :count).by(1)
 			end
-			it 'should redirect to the index path' do
+			it 'should redirect to the show path' do
 				post:create, group: valid_attributes
-				expect(response).to redirect_to groups_path
+				expect(response).to redirect_to group_path(@groups)
 			end
 		end
 		describe 'with invalid attributes' do

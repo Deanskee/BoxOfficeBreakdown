@@ -13,5 +13,12 @@ describe User do
 		it { should have_db_column(:level) }
 
   end
+
+  before do
+    @user = User.create!(email: "dan@gmail.com", password: "hey")
+  end
+   it "is valid with a email, and password" do
+    expect(@user).to be_valid
+  end
 end
 
