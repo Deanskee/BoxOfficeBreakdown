@@ -1,4 +1,4 @@
-<h1>Welcome#index</h1>
+<h1>Box Office Breakdown</h1>
 
 <li class="add_group_style"><%= link_to "+ Add New Group", new_group_path %></li>
  <div id = "moviecontainer">
@@ -21,8 +21,8 @@
   <tbody>
     <% @listings.each do |t| %>
       <tr>
-        <td><%= t[0] %></td>
-        <td><%= t[1] %></td>
+        <td><%= t.movie.title %></td>
+        <td><%= number_to_currency(t.movie.actual_amount) %></td>
       </tr>
      
     <% end %>
