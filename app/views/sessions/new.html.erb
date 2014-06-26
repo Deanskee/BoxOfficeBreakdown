@@ -1,0 +1,12 @@
+<div class = "basic-container">
+	<h1>Log In</h1>
+
+<%= form_for :session, :url => sessions_path do |f| %>
+
+    <span class="title">Email: </span><%= f.text_field :email %>
+
+    <span class="title">Password: </span><%= f.password_field :password %>
+
+  <%= f.submit "Log in", class: "small button" %>
+<% end %>
+</div>

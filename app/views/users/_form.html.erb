@@ -1,0 +1,9 @@
+<%= form_for @user do |f| %>
+    <span class="title">Name: </span><%= f.text_field :name %>
+        <span class="title">Email: </span><%= f.email_field :email %>
+
+    <span class="title">Password: </span><%= f.password_field :password %>
+    
+  <%= f.submit "Submit", class: "small button" %>
+
+<% end %>

@@ -71,7 +71,7 @@ end
   end
 
   def group_params
-    params.require(:group).permit(:name, :description, :avatar_file_name, :avatar_content_type, :avatar_file_size, :avatar, :user_ids => [])
+    params.require(:group).permit(:name, :description, :avatar, :user_ids => [])
   end
 
 end

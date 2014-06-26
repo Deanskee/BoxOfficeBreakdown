@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :guesses
   resources :groups 
   resources :users
-  
+  resources :sessions, only: [:new, :create, :destroy]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
 

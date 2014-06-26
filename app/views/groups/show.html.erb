@@ -10,7 +10,7 @@
 
 <div id="profile-photo">
 	<% if @group.avatar_file_name %>
-		<%= image_tag @group.avatar_url(:thumb), id: "header-pic" %><br /><br />
+		<%= image_tag @group.avatar.url(:thumb) %><br /><br />
 	<% end %>
 </div>
 
