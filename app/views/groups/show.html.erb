@@ -1,5 +1,5 @@
 <h1>Groups#show</h1>
-<p>Find me in app/views/groups/show.html.erb</p>
+
 <div id= "profile-info">
 	<l1>Group Name: <%= @group.name %></li>
 	</br>
@@ -10,27 +10,21 @@
 
 <div id="profile-photo">
 	<% if @group.avatar_file_name %>
-		<%= image_tag @group.avatar_url(:thumb) %><br /><br />
+		<%= image_tag @group.avatar_url(:thumb), id: "header-pic" %><br /><br />
 	<% end %>
 </div>
 
-	<div class="group_members">
-			<strong><p>Group Members</p></strong>
-			<ul>
-			  <% @group.users.each do |user| %>
-				<li class="group_members_names"><%= user.name %></li>
-			  <% end %>
-			</ul>
-		</div>
-
-		<% @group.users.each do |u| %>
-			Users in group: <%= u.name %>
-			Points: <%= u.points %>
-			Guess:	<%= u.guesses %>
-		<% end %>
-
+<div class="group_members">
+	<strong><p>Group Members:</p></strong>
+		<ul>
+		  <% @group.users.each do |user| %>
+			<li class="group_members_names"><%= user.name %></li>
+		  <% end %>
+		</ul>
+</div>
 
 <ul class="button-group">
 	<li><%= link_to 'delete', @group, class: "tiny button", method: :delete, data: {confirm: 'are you sure'} %></li>
 	<li><%= link_to 'edit', edit_group_path(@group), class: "tiny button" %></li>
 </ul>
+

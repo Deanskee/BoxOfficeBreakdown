@@ -7,8 +7,6 @@ class Group < ActiveRecord::Base
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   validates_presence_of :name, :description
 
-   
-  
   def avatar_url(size)
     self.avatar.url(size)
   end

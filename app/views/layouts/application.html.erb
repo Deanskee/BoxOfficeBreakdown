@@ -22,48 +22,43 @@
           </li>
         </ul>
 
+        
         <section class="top-bar-section">
             <!-- Left Nav Section -->
           <ul class="left">
         
-            <li class="has-form">
-              <form action="/groups" method: "get">
-                <div class="row collapse">
-                  <%# form_tag venues_path, :method => :get do %>
-                  <!--this search box should really be longer-->
-                  <div class="large-11 small-9 columns">
-                    <%# search_params_present %>
-                    <%# text_field_tag :search, params[:search], placeholder: "Enter venue name, city, and state" %>
-                  </div>
-                  <div class="large-1 small-3 columns">
-                    <%# submit_tag "Search", :name => nil, class: "button" %>
-                    <%# end %>
-                  </div>
-                </div>
-              </form>
-            </li>
+   
            </ul>
-
-            <ul class="right">
-			  <% if current_user %>
-			    <li>Welcome <strong><%= current_user.name %></strong>! </li>
-			    <li><%= image_tag current_user.profile_picture_url %></li>
-			   	
-			    <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+			 
+			  <ul class="right">
+			  	<li><%= link_to "Add New Group", new_group_path %></li>
+			  	<% if current_user %>
+			  	<li><%= image_tag current_user.profile_picture_url %></li>
+			    <li class="has-dropdown">
+			      <a href="#">Welcome <strong><%= current_user.name %></strong>! </a>
+			    	<ul class="dropdown">	
+			    	  <li><%=link_to "View", user_path(current_user) %></li>
+                  	 
+			   	 	  <li><%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+			   		</ul>
+			    </li>
+			</ul>
 			  <% else %>
-			    <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %></li>
+			    <li><%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+			    </li>
 			  <% end %>
-            </ul>
+            
 		</section>
-	</nav>
-</div>
+	  </nav>
+    </div>
+
 	 <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
 
-	    <%= yield %>
-	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	    <%= javascript_include_tag "application" %>
-	    
+	  <%= yield %>
+
+	<%= javascript_include_tag "application" %>
+		    
   </body>
 </html>
