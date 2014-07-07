@@ -4,6 +4,7 @@ var baseUrl = "http://api.rottentomatoes.com/api/public/v1.0";
 
 // construct the uri with our apikey
 var moviesUpcomingUrl = baseUrl + '/lists/movies/upcoming.json?apikey=' + apikey;
+var moviesBoxOfficeUrl = baseUrl + '/lists/movies/box_office.json?apikey=' + apikey;
 var query = "movies";
 
 $(document).ready(function() {
@@ -11,6 +12,11 @@ $(document).ready(function() {
   // send off the query
   $.ajax({
     url: moviesUpcomingUrl + '&q=' + encodeURI(query),
+    dataType: "jsonp",
+    success: searchCallback
+  });
+    $.ajax({
+    url: moviesBoxOfficeUrl + '&q=' + encodeURI(query),
     dataType: "jsonp",
     success: searchCallback
   });
@@ -24,7 +30,7 @@ function searchCallback(data) {
  // $('#test').append('Found ' + data.total + ' results for ' + query);
  var movies = data.movies;
  $.each(movies, function(index, movie) {
-   $('#test').append('<li> <strong>' + movie.title + '</strong> </li>');
+   $('#movietitle').append('<li>' + movie.title + '</li>');
    $('#dates').append('<li>' + movie.release_dates.theater + '</li>');
    
  });

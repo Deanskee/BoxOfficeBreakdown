@@ -6,7 +6,21 @@ class GroupsController < ApplicationController
 
 def index
     @groups = Group.all
-    
+    url = "https://search.yahoo.com/search?p=movie+weekend+box+office&toggle=1&cop=mss&ei=UTF-8&fr=yfp-t-901"
+    doc = Nokogiri::HTML(open(url))
+
+    listings = Array.new
+
+  
+    doc.css(".wrap").each do |item|
+      @title = item.at_css(".c-styl-5").text
+      @box = item.at_css(".c-styl-8").text
+
+      listings << [@title, @box]
+
+    @listings = listings[0..4]
+
+  end
 end
 
 

@@ -6,3 +6,22 @@
 <%= link_to 'delete', g, method: :delete, data: {confirm: 'are you sure'} %>
 <%= link_to 'edit', edit_group_path(g) %>
 <% end %>
+
+
+<table id="moviecontainer">
+  <thead>
+    <tr>
+      <th>TITLE</th>
+      <th>ACTUAL AMOUNT</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @listings.each do |t| %>
+      <tr>
+        <td><%= t[0] %></td>
+        <td><%= t[1] %></td>
+      </tr>
+     
+    <% end %>
+  </tbody>
+</table>
