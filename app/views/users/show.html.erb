@@ -1,3 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>Users Show Page</h1>
+
+<% @guesses.each do |g| %>
+<ul>
+<li>Amount: <%= g.amount %> million</li>
+<li>Movie ID: <%= g.movie_id %></li>
+</ul>
+<% end %>
+
+
  <%=link_to "Edit Profile", edit_user_path(current_user), class: "small button" %>

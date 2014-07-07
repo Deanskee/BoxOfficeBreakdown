@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   respond_to :json, :html
 
+  before_action :set_user, :only => [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
     respond_with @users  
@@ -28,9 +30,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @guesses = Guess.all
     respond_with @users
   end
 
+  def edit
+  end
 
   def update
     if @user.update(user_params)

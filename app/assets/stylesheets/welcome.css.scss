@@ -1,3 +1,27 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#moviecontainer {
+	border:1px solid black;
+}
+
+#movietitle {
+	float:left;
+}
+
+#movietitle li {
+	font-size:15px;
+	text-decoration:none;
+}
+
+li { 
+	list-style-type: none;
+	line-height:1.1; 
+}
+
+#dates{
+float:left;
+width:auto;
+margin-left: 10px;
+}

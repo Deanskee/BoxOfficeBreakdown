@@ -1,21 +1,55 @@
 <h1>Box Office Breakdown</h1>
 
-<li class="add_group_style"><%= link_to "+ Add New Group", new_group_path %></li>
- <div id = "moviecontainer">
-	<div id="test">
-		
-	</div>
 
-	<div id="dates"></div>
-	<div class="clearfix"></div>
+<div class="row">
+  
+<div class="large-6 columns">
+<table id="moviecontainer">
+  <thead>
+    <tr>
+      <th>Last Week Box Office</th>
+      <th>Actuals</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @listingstwo.each do |t| %>
+      <tr>
+        <td><%= t[0] %></td>
+        <td><%= t[1] %></td>
+      </tr>
+     
+    <% end %>
+  </tbody>
+</table>
 </div>
+
+<div class="large-6 columns">
+  <table id="moviecontainer">
+    <thead>
+      <tr>
+      <th>Upcoming Titles</th>
+      <th>Release Dates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span id="movietitle"></span></td>
+          <td><span id="dates"></span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+	<div class="clearfix"></div>
+<% if current_user || session[:remember_token] %>
+<div style="text-align: center;"> <%= link_to "+ Add a New Guess", new_guess_path, class:'button' %></div>
+<% end %>
 <table>
   <thead>
     <tr>
       <th>TITLE</th>
       <th>WEEKEND BOX OFFICE</th>
-      <th></th>
-    </tr>
+    </tr> 
   </thead>
 <!-- calling scrape from online and throwing into an array -->
   <tbody>
@@ -29,4 +63,3 @@
   </tbody>
 </table>
 
-<br>
